@@ -134,5 +134,5 @@ class MainActivity : AppCompatActivity() {
 最终运行如图所示：
 <img src="http://img.blog.csdn.net/20160217165421721" width = "500" height = "880" alt="运行效果" align=center />
 
-###4、例子下载
-[点击查看](https://github.com/cayden/MyKotlin)
+###4、kotlin中文文档
+[点击查看](https://github.com/kymjs/KotlinDoc-cn)
