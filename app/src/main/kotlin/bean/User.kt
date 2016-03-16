@@ -6,7 +6,7 @@ package bean
  *
  */
 data class User(
-        var name: String ,
+        var name: String,
         var age: Int,
         var email: String
 
