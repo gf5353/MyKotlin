@@ -4,17 +4,23 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import example.SampleActivity1
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    var tv: TextView ? = null
+    var btn_sample_1: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        tv.text = "Hello MyKotlin"
-        tv.textSize = 20.0f
-        btn_sample_1.setOnClickListener {
+        tv = findViewById(R.id.tv) as TextView?
+        btn_sample_1 = findViewById(R.id.btn_sample_1) as Button?
+        tv!!.text = "Hello MyKotlin"
+        (tv as TextView).textSize = 20.0f
+        btn_sample_1?.setOnClickListener {
             v: View ->
             startActivity(Intent(this, SampleActivity1::class.java))
         }

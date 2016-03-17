@@ -2,11 +2,10 @@ package example
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.text.TextUtils
 import android.util.Log
+import android.widget.TextView
 import bean.User
 import com.example.mykotlin.R
-import kotlinx.android.synthetic.main.activity_sample1.*
 import java.util.*
 
 /**
@@ -18,7 +17,7 @@ class SampleActivity1 : AppCompatActivity() {
 
 
     /**
-     *1.函数方法的订阅
+     *1.函数方法的定义
      * 参数：类型 返回类型也基本和java语法相反
      */
     fun sum(a: Int, b: Int): Int {
@@ -35,14 +34,16 @@ class SampleActivity1 : AppCompatActivity() {
           */
     private var x: Int = 5
     private var tag: String = "SampleActivity1"
+    private var tv_sample1: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sample1)
-        //        createMode()
+        tv_sample1 = findViewById(R.id.tv_sample1) as TextView?
+        createMode()
         //        changeData()
         //        control()
-        breakAndContinue()
+        //        breakAndContinue()
     }
 
 
@@ -51,14 +52,21 @@ class SampleActivity1 : AppCompatActivity() {
      */
     fun createMode() {
         val user = User("A", 2, "562401002@qq.com")//name,age,对应构造函数类型 var是可变变量，val是不可变(相当于final)
-        var usr = user.copy(name = "B")
+        var u = User()
+        var usr = user.copy(age = 1)
+        usr = user.copy("B")
+
         this.log(String.format("name = %s email = %s", usr.component1(), usr.component3()))//get方法按照构造函数的顺序生成，不过貌似没有set方法
 
+
         //字符串模板表达式
+        var (name, age) = user//多重申明方式
+        this.log("name=$name,age= $age ")
+
         var name1 = user.name
         var name2 = usr.name
         var sum = "$name1 和 $name2 的年龄之和为 ${sum(user.age, usr.age)}"
-        log(sum)
+        this.log(sum)
     }
 
     /**
@@ -70,7 +78,7 @@ class SampleActivity1 : AppCompatActivity() {
         var str: String = "hello word ! \n"
         this.log(String.format("$str has word is %b \n", str.compareTo("word")))
 
-        //        var arry: Array<User> = emptyArray() //返回指定类型空数组
+        // var arry: Array<User> = emptyArray() //返回指定类型空数组,指定大小为0，不能添加？
         var arry: Array<User?> = arrayOfNulls(str.length)
         for (c in  str) {
             var name = c.toString()//需要char 转string
@@ -183,9 +191,9 @@ class SampleActivity1 : AppCompatActivity() {
         //返回空类型可忽略
         Log.d(tag, log)
         var buffer = StringBuffer()
-        buffer.appendln(tv_sample1.text.trim())
+        buffer.appendln(tv_sample1?.text?.trim())
         buffer.appendln(log)
-        tv_sample1.setText(buffer.toString())
+        tv_sample1?.setText(buffer.toString())
     }
 
 }

@@ -6,9 +6,9 @@ package bean
  *
  */
 data class User(
-        var name: String,
-        var age: Int,
-        var email: String
+        var name: String = "",
+        var age: Int = 0,
+        var email: String = ""
 
         //private -- 只在声明的范围和同一个模块的子范围可见；
         //
@@ -17,4 +17,5 @@ data class User(
         //internal -- (默认使用) 在同一个模块中都可见；
         //
         //public -- 在任何地方均可见；
+
 )
