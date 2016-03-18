@@ -101,10 +101,8 @@ class SampleActivity1 : AppCompatActivity() {
             max = b
 
         //带 else
-        if (a > b)
-            max = a
-        else
-            max = b
+        if (a > b) max = a
+        else max = b
 
         //作为表达式 返回最后的值
         max = if (a > b) a else b
@@ -143,6 +141,7 @@ class SampleActivity1 : AppCompatActivity() {
             rand == 6 -> this.log(" is 6")
             else -> this.log(" is other")
         }
+
         var users: Array<User?> = arrayOfNulls(10)
         for (i in users.indices) {
             //通过索引迭代
@@ -150,8 +149,22 @@ class SampleActivity1 : AppCompatActivity() {
             //            usr.name = null!!//抛出KotlinNullPointerException
             users.set(i, usr)
         }
+
         for (user in users) {
             this.log("name=" + user?.name + "age:" + user?.age)//空安全调用操作符
+        }
+
+        var ints: Array<Int?> = arrayOfNulls(5)
+        for (item: Int? in ints) {
+            //内容可以是一个语句块
+            //...
+        }
+        users.forEach {
+            this.log("i:" + it?.name + "size=" + users.size)
+            if (it?.age == 3) {
+                this.log("return" + it?.age)
+                return
+            }
         }
     }
 
