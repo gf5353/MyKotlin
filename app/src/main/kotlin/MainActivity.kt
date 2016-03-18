@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import example.SampleActivity1
-import kotlinx.android.synthetic.main.activity_main.*
+import example.SampleActivity2
 
 class MainActivity : AppCompatActivity() {
     var tv: TextView ? = null
@@ -20,11 +20,20 @@ class MainActivity : AppCompatActivity() {
         btn_sample_1 = findViewById(R.id.btn_sample_1) as Button?
         tv!!.text = "Hello MyKotlin"
         (tv as TextView).textSize = 20.0f
-        btn_sample_1?.setOnClickListener {
-            v: View ->
-            startActivity(Intent(this, SampleActivity1::class.java))
-        }
+        btn_sample_1?.setOnClickListener(onclick)
+        findViewById(R.id.btn_sample_2).setOnClickListener(onclick)
     }
 
+
+    var onclick = View.OnClickListener { v: View ->
+        when (v?.id) {
+            R.id.btn_sample_1 -> {
+                startActivity(Intent(this, SampleActivity1::class.java))
+            }
+            R.id.btn_sample_2 -> {
+                startActivity(Intent(this, SampleActivity2::class.java))
+            }
+        }
+    }
 }
 
